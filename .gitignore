@@ -1,0 +1,3 @@
+proto/*.pb.go
+proto/protoc
+proto/protoc.exe

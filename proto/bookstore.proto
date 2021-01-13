@@ -1,0 +1,55 @@
+syntax="proto3";
+
+package proto;
+
+//import "google/protobuf/timestamp.proto";
+
+service Bookstore {
+	rpc	CreateBook(BookReq) returns (BookRes) {}
+	rpc	GetBook(BookQuery) returns (BookRes) {}
+	rpc	GetAllBooks(EmptyQuery) returns (BookList) {}
+	rpc	UpdateBook(UpdateBookReq) returns (BookRes) {}
+	rpc	DeleteBook(BookQuery) returns (DeleteBookRes) {}
+}
+
+message EmptyQuery {}
+
+message BookQuery {
+	string id = 1;
+}
+
+message DeleteBookRes {
+	bool success = 1;
+}
+
+message BookAuthor {
+	string firstname = 1;
+	string lastname = 2;
+}
+
+message UpdateBookReq {
+	string id = 1;
+	Book book = 2;
+}
+
+message BookReq {
+	Book book = 1;
+}
+
+message BookRes {
+	Book book = 1;
+}
+
+message Book {
+	string Id = 1;
+	string title = 2;
+	string description = 3;
+	BookAuthor author = 4;
+	int32 releaseYear = 5;
+	//google.protobuf.Timestamp CreatedAt = 6;
+	//google.protobuf.Timestamp ModifiedAt = 7;
+}
+
+message BookList {
+	repeated Book books = 1;
+}
