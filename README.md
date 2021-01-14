@@ -13,7 +13,7 @@ cd proto && protoc *.proto --go_out=plugins=grpc:.
 ```
 
 
-#### Run
+#### Start
 
 ```
 go run server/main.go
